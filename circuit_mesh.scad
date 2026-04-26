@@ -86,7 +86,8 @@ difference() {
     // Base plate with rounded corners
     linear_extrude(board_thick) {
         offset(r=corner_radius, $fn=20) {
-            square([board_width - 2*corner_radius, board_depth - 2*corner_radius]);
+            translate([corner_radius, corner_radius])
+                square([board_width - 2*corner_radius, board_depth - 2*corner_radius]);
         }
     }
 
