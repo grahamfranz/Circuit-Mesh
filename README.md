@@ -8,7 +8,7 @@ A parametric 3D-printable prototyping board for poke-through component mounting.
 
 ## Hammond die-cast enclosure presets
 
-Set the `preset` parameter to size the board footprint automatically for a standard Hammond die-cast enclosure. The board will fit inside the enclosure, accounting for wall thickness. The dimensions below are the *outer* enclosure footprints; `enclosure_wall_thick` (default 1.5mm per side) is automatically subtracted so your board fits with clearance.
+Set the `preset` parameter to size the board footprint automatically for a standard Hammond die-cast enclosure. The board will fit inside the enclosure, accounting for wall thickness. The dimensions below are the *outer* enclosure footprints; `enclosure_wall_thick` (default 2.5mm per side) is automatically subtracted so your board fits with clearance.
 
 | Preset    | L (mm) | W (mm) | H (mm) | Notes                        |
 |-----------|--------|--------|--------|------------------------------|
@@ -18,7 +18,7 @@ Set the `preset` parameter to size the board footprint automatically for a stand
 | `125B`    | 121    |  66    |  39    | Deeper 1590B alternative     |
 | `custom`  | —      |  —     |  —     | Use `custom_board_width` / `custom_board_depth` |
 
-`board_thick` (PCB thickness, default 2.5 mm) and `enclosure_wall_thick` (default 1.5 mm) are independent of the preset and should be adjusted separately based on your enclosure and material.
+`board_thick` (PCB thickness, default 2.5 mm) and `enclosure_wall_thick` (default 2.5 mm per side) are independent of the preset and should be adjusted separately based on your enclosure and material.
 
 ---
 
@@ -42,7 +42,7 @@ Open `circuit_mesh.scad` in [OpenSCAD](https://openscad.org) and adjust the valu
 | `preset` | `"custom"` | Hammond enclosure preset — see table above |
 | `custom_board_width` | 80mm | Board width, used only when `preset = "custom"` |
 | `custom_board_depth` | 60mm | Board depth, used only when `preset = "custom"` |
-| `enclosure_wall_thick` | 1.5mm | Wall thickness of Hammond enclosure per side — subtracted automatically from preset dimensions |
+| `enclosure_wall_thick` | 2.5mm | Wall thickness of Hammond enclosure per side — subtracted automatically from preset dimensions |
 | `board_thick` | 2.5mm | Thickness — more grip, harder insertion. Can be reduced to 2.0mm for lighter builds; consider 3mm if using screw holes |
 | `hole_dia` | 1.2mm | Lead hole diameter — tune per material |
 | `pitch` | 2.54mm | Hole spacing (standard component pitch) |

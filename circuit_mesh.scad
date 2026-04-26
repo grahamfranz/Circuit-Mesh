@@ -11,8 +11,8 @@
 preset = "custom"; // [1590A, 1590B, 1590BB, 125B, custom]
 
 // Wall thickness of Hammond enclosure — subtract from outer dimensions to get inner space
-// Typical die-cast boxes: 1.5mm per side = 3mm total reduction
-enclosure_wall_thick = 1.5;  // mm — adjust if your enclosure has different wall thickness
+// Typical die-cast boxes: 2.5mm per side = 5mm total reduction
+enclosure_wall_thick = 2.5;  // mm — adjust if your enclosure has different wall thickness
 
 // Board footprint — edit these only when preset = "custom":
 custom_board_width = 80;  // mm
