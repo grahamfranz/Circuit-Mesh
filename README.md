@@ -67,9 +67,19 @@ Resin printers may require tighter tolerances (closer to 0.85mm) due to higher a
 
 ---
 
-## example stl
+## pre-rendered stls
 
-A pre-exported STL with default settings is in the `renders/` folder if you just want to print without running OpenSCAD.
+Ready-to-print STL files for all Hammond enclosure presets are in the `renders/` folder:
+
+| Filename | Preset | Grid | File size |
+|----------|--------|------|-----------|
+| `circuit_mesh_1590A.stl` | 1590A | 30 × 9 (270 holes) | 2.2M |
+| `circuit_mesh_1590B.stl` | 1590B | 38 × 17 (646 holes) | 5.1M |
+| `circuit_mesh_1590BB.stl` | 1590BB | 40 × 31 (1,240 holes) | 9.6M |
+| `circuit_mesh_125B.stl` | 125B | 41 × 20 (820 holes) | 6.4M |
+| `circuit_mesh_custom.stl` | custom | 27 × 19 (513 holes) | 4.1M |
+
+Just download and print — no OpenSCAD needed. To customize, edit `circuit_mesh.scad`, render with **F6**, and export to STL via **File → Export**.
 
 ---
 
