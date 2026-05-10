@@ -7,8 +7,13 @@
 //          "1590B"  (112  x 60   mm outer, 31 mm deep)
 //          "1590BB" (119  x 94   mm outer, 34 mm deep)
 //          "125B"   (121  x 66   mm outer, 39 mm deep)
+//          "barre_controller" – Barre-Controller enclosure mode (4 barres, default 37 mm pitch)
+//                               Board: 106 x 133 mm. Keep screw_margin = 4 (default).
+//                               Place board at (12, 12) mm from the lower-panel outer corner
+//                               so the four M3 screws land on the corner standoffs.
+//                               ~8 mm component clearance above the board inside the shell.
 //          "custom" - enter your own dimensions in custom_board_width / custom_board_depth
-preset = "custom"; // [1590A, 1590B, 1590BB, 125B, custom]
+preset = "custom"; // [1590A, 1590B, 1590BB, 125B, barre_controller, custom]
 
 // Wall thickness of Hammond enclosure - subtract from outer dimensions to get inner space
 // Typical die-cast boxes: 2.5mm per side = 5mm total reduction
@@ -19,29 +24,33 @@ custom_board_width = 80;  // mm
 custom_board_depth = 60;  // mm
 
 // Outer dimensions of Hammond boxes (from specifications)
-outer_board_width = preset == "1590A"  ?  92.5 :
-                    preset == "1590B"  ? 112   :
-                    preset == "1590BB" ? 119   :
-                    preset == "125B"   ? 121   :
+outer_board_width = preset == "1590A"           ?  92.5 :
+                    preset == "1590B"           ? 112   :
+                    preset == "1590BB"          ? 119   :
+                    preset == "125B"            ? 121   :
+                    preset == "barre_controller"? 106   :
                     custom_board_width;
 
-outer_board_depth = preset == "1590A"  ?  38.5 :
-                    preset == "1590B"  ?  60   :
-                    preset == "1590BB" ?  94   :
-                    preset == "125B"   ?  66   :
+outer_board_depth = preset == "1590A"           ?  38.5 :
+                    preset == "1590B"           ?  60   :
+                    preset == "1590BB"          ?  94   :
+                    preset == "125B"            ?  66   :
+                    preset == "barre_controller"? 133   :
                     custom_board_depth;
 
-// Subtract wall thickness on both sides (2x wall_thick) to get dimensions that fit inside
-is_custom = preset == "custom";
+// Subtract wall thickness on both sides (2x wall_thick) to get dimensions that fit inside.
+// barre_controller uses direct board dimensions (no wall subtraction needed).
+is_custom = (preset == "custom") || (preset == "barre_controller");
 board_width = is_custom ? outer_board_width : (outer_board_width - 2*enclosure_wall_thick);
 board_depth = is_custom ? outer_board_depth : (outer_board_depth - 2*enclosure_wall_thick);
 
 // Enclosure interior height - informational reference, not used in board geometry.
 // Tells you how much vertical clearance the chosen Hammond box provides.
-enclosure_height = preset == "1590A"  ? 31 :
-                   preset == "1590B"  ? 31 :
-                   preset == "1590BB" ? 34 :
-                   preset == "125B"   ? 39 :
+enclosure_height = preset == "1590A"           ? 31 :
+                   preset == "1590B"           ? 31 :
+                   preset == "1590BB"          ? 34 :
+                   preset == "125B"            ? 39 :
+                   preset == "barre_controller"?  8 :  // mm above board inside shell
                    0;   // 0 = no preset selected
 
 board_thick  = 2.5;   // mm - thicker = more grip, harder to insert (2.0mm for lighter builds)
